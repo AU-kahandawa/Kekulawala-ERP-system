@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- ─── Primary SEO ─────────────────────────────────── -->
+    <title>Kekulawala Unified ERP v5.0</title>
+    <meta name="description" content="Comprehensive ERP for Kekulawala Advertising — Projects, Finance, HR, CRM, Inventory & Procurement" />
+    <meta name="author" content="Kekulawala Advertising (Pvt) Ltd" />
+    <meta name="keywords" content="ERP, advertising, Sri Lanka, projects, HR, payroll, finance" />
+
+    <!-- ─── PWA / Web App ───────────────────────────────── -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="K-ERP" />
+
+    <!-- ─── Apple / iOS PWA ────────────────────────────── -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="K-ERP" />
+    <link rel="apple-touch-icon" href="/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="72x72"   href="/icons/icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="96x96"   href="/icons/icon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="128x128" href="/icons/icon-128x128.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png" />
+
+    <!-- iOS Splash Screens (key sizes) -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)"  href="/icons/icon-512x512.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3)"  href="/icons/icon-512x512.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)"  href="/icons/icon-512x512.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"  href="/icons/icon-512x512.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"  href="/icons/icon-512x512.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" href="/icons/icon-512x512.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" href="/icons/icon-512x512.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" href="/icons/icon-512x512.png" />
+
+    <!-- ─── Theme & Chrome ──────────────────────────────── -->
+    <meta name="theme-color" content="#060d1f" />
+    <meta name="msapplication-TileColor" content="#060d1f" />
+    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png" />
+
+    <!-- ─── Open Graph ──────────────────────────────────── -->
+    <meta property="og:title" content="Kekulawala Unified ERP v5.0" />
+    <meta property="og:description" content="Comprehensive ERP for Kekulawala Advertising — Projects, Finance, HR, CRM & more" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/icons/icon-512x512.png" />
+
+    <!-- ─── Favicon ─────────────────────────────────────── -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/icons/icon-96x96.png" />
+
+    <!-- ─── Fonts ───────────────────────────────────────── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- ─── Inline Critical CSS for instant background ──── -->
+    <style>
+      html, body, #root { margin: 0; padding: 0; background: #060d1f; }
+      body { overflow: hidden; }
+      /* Prevent FOUC */
+      #root:empty::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: #060d1f;
+        z-index: 9999;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- ─── Service Worker Registration ─────────────────── -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js', { scope: '/' })
+            .then(reg => {
+              console.log('[PWA] Service Worker registered. Scope:', reg.scope);
+
+              // Check for updates
+              reg.addEventListener('updatefound', () => {
+                const newWorker = reg.installing;
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    console.log('[PWA] New version available. Refresh to update.');
+                    // Optionally show update toast here
+                  }
+                });
+              });
+            })
+            .catch(err => console.warn('[PWA] Service Worker registration failed:', err));
+        });
+      }
+
+      // Prevent double-tap zoom on iOS (ERP UX improvement)
+      document.addEventListener('touchend', function(event) {
+        var now = (new Date()).getTime();
+        if (now - this.lastTouch <= 300) { event.preventDefault(); }
+        this.lastTouch = now;
+      }, { passive: false });
+    </script>
+  </body>
+</html>

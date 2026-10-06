@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1b35"/>
+      <stop offset="100%" stop-color="#060d1f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <!-- Background with rounded corners -->
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- Accent strip top -->
+  <rect x="0" y="0" width="512" height="4" rx="4" fill="url(#accent)" opacity="0.8"/>
+  <!-- K letter - left vertical bar -->
+  <rect x="136" y="128" width="52" height="256" rx="10" fill="white"/>
+  <!-- K letter - top diagonal arm -->
+  <path d="M188 256 L348 128 L384 128 L224 256" fill="white"/>
+  <!-- K letter - bottom diagonal arm -->
+  <path d="M188 256 L348 384 L384 384 L224 256" fill="white"/>
+  <!-- Accent line under K -->
+  <rect x="136" y="400" width="240" height="6" rx="3" fill="url(#accent)"/>
+  <!-- Dot accent top-right -->
+  <circle cx="376" cy="136" r="14" fill="url(#accent)" opacity="0.8"/>
+</svg>
